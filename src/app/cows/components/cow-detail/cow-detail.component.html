@@ -1,0 +1,74 @@
+<p-card class="detail-card" *ngIf="cow">
+ <ng-template pTemplate="header">
+  <div class="detail-header">
+    <h2 class="detail-title">Cow Details – {{ cow?.earTag }}</h2>
+
+    <button
+      pButton
+      type="button"
+      label="Back"
+      icon="pi pi-arrow-left"
+      class="p-button-secondary back-btn"
+      (click)="backToList()"
+    ></button>
+  </div>
+</ng-template>
+
+  <div class="cow-info-grid">
+    <div class="info-item">
+      <label>Ear Tag</label>
+      <div class="value">{{ cow.earTag }}</div>
+    </div>
+
+    <div class="info-item">
+      <label>Sex</label>
+      <div class="value">{{ getSexLabel() }}</div>
+    </div>
+
+    <div class="info-item">
+      <label>Pen</label>
+      <div class="value">{{ cow.pen }}</div>
+    </div>
+
+    <div class="info-item">
+      <label>Status</label>
+      <div class="value">{{ cow.status | statusLabel }}</div>
+    </div>
+
+    <div class="info-item">
+      <label>Current Weight</label>
+      <div class="value">{{ cow.weight ?? '—' }} kg</div>
+    </div>
+
+    <div class="info-item">
+      <label>Daily Weight Gain</label>
+      <div class="value">
+        <ng-container *ngIf="cow.dailyWeightGain !== undefined; else NA">
+          {{ cow.dailyWeightGain }} kg/day
+        </ng-container>
+        <ng-template #NA>—</ng-template>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <label>Last Event Date</label>
+      <div class="value">{{ cow.lastEventDate | date: 'medium' }}</div>
+    </div>
+  </div>
+
+  <h3 class="timeline-title">Recent Events</h3>
+
+  <p-timeline
+    [value]="lastEvents"
+    align="alternate"
+    styleClass="custom-timeline"
+  >
+    <ng-template pTemplate="content" let-event>
+      <div class="timeline-box">
+        <div class="event-type">{{ event.type }}</div>
+        <div class="event-desc">{{ event.description }}</div>
+        <div class="event-date">{{ event.date | date: 'medium' }}</div>
+      </div>
+    </ng-template>
+  </p-timeline>
+</p-card>

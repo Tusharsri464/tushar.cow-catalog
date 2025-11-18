@@ -1,0 +1,95 @@
+<p-card>
+ <ng-template pTemplate="header">
+  <div class="form-header">
+    <h2 class="form-title">{{ isEditMode ? 'Edit Cow' : 'Add New Cow' }}</h2>
+  </div>
+</ng-template>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form-grid">
+
+    <!-- Ear Tag -->
+    <div class="form-item">
+      <label>Ear Tag *</label>
+      <input pInputText formControlName="earTag" placeholder="Unique ear tag" />
+      
+      <small class="p-error"
+        *ngIf="form.get('earTag')?.hasError('required') && form.get('earTag')?.touched">
+        Ear Tag is required.
+      </small>
+
+      <small class="p-error"
+        *ngIf="form.get('earTag')?.hasError('notUnique')">
+        This Ear Tag already exists.
+      </small>
+    </div>
+
+    <!-- Sex -->
+    <div class="form-item">
+      <label>Sex *</label>
+      <p-dropdown
+        [options]="sexOptions"
+        formControlName="sex"
+        placeholder="Select sex">
+      </p-dropdown>
+
+      <small class="p-error"
+        *ngIf="form.get('sex')?.hasError('required') && form.get('sex')?.touched">
+        Sex is required.
+      </small>
+    </div>
+
+    <!-- Pen -->
+    <div class="form-item">
+      <label>Pen *</label>
+      <input pInputText formControlName="pen" placeholder="i.e. A2" />
+
+      <small class="p-error"
+        *ngIf="form.get('pen')?.hasError('required') && form.get('pen')?.touched">
+        Pen is required.
+      </small>
+    </div>
+
+    <!-- Status -->
+    <div class="form-item">
+      <label>Status *</label>
+      <p-dropdown
+        [options]="statusOptions"
+        formControlName="status">
+      </p-dropdown>
+
+      <small class="p-error"
+        *ngIf="form.get('status')?.hasError('required') && form.get('status')?.touched">
+        Status is required.
+      </small>
+    </div>
+
+    <!-- Weight -->
+    <div class="form-item">
+      <label>Weight (kg)</label>
+      <p-inputNumber formControlName="weight" [min]="1"></p-inputNumber>
+
+      <small class="p-error"
+        *ngIf="form.get('weight')?.hasError('min') && form.get('weight')?.touched">
+        Weight must be at least 1 kg.
+      </small>
+    </div>
+
+    <!-- Daily Weight Gain -->
+    <div class="form-item">
+      <label>Daily Weight Gain (kg)</label>
+      <p-inputNumber formControlName="dailyWeightGain" [min]="0.1"></p-inputNumber>
+
+      <small class="p-error"
+        *ngIf="form.get('dailyWeightGain')?.hasError('min') && form.get('dailyWeightGain')?.touched">
+        Daily gain must be greater than 0.
+      </small>
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-actions">
+      <button pButton type="submit" label="Save" icon="pi pi-save"></button>
+      <button pButton type="button" class="p-button-secondary" label="Cancel" (click)="cancel()"></button>
+    </div>
+
+  </form>
+</p-card>

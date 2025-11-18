@@ -1,0 +1,6 @@
+export enum CowEventType {
+  WEIGHT_CHECK = 'WEIGHT_CHECK',
+  TREATMENT = 'TREATMENT',
+  PEN_CHANGED = 'PEN_CHANGED',
+  DEATH = 'DEATH'
+}

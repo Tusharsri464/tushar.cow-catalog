@@ -1,0 +1,67 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="list-header">
+      <h2></h2>
+      <button pButton class="add-button" type="button" label="Add New Cow" icon="pi pi-plus" (click)="onAddNew()"></button>
+    </div>
+  </ng-template>
+
+  <app-cow-filters
+    [filterState]="filterState"
+    [pens]="pens"
+    (filterChange)="onFilterChange($event)">
+  </app-cow-filters>
+
+  <p-table
+    [value]="cows"
+    [paginator]="true"
+    [rows]="5"
+    [responsiveLayout]="'scroll'"
+    selectionMode="single"
+    dataKey="id"
+    (onRowSelect)="onRowSelect($event.data)"
+    [sortField]="'earTag'"
+    [sortOrder]="1">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="earTag">
+          Ear Tag
+          <p-sortIcon field="earTag"></p-sortIcon>
+        </th>
+        <th pSortableColumn="sex">
+          Sex
+          <p-sortIcon field="sex"></p-sortIcon>
+        </th>
+        <th pSortableColumn="pen">
+          Pen
+          <p-sortIcon field="pen"></p-sortIcon>
+        </th>
+        <th pSortableColumn="status">
+          Status
+          <p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th pSortableColumn="lastEventDate">
+          Last Event Date
+          <p-sortIcon field="lastEventDate"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-row>
+      <tr [pSelectableRow]="row">
+        <td>{{ row.earTag }}</td>
+        <td>{{ getSexLabel(row) }}</td>
+        <td>{{ row.pen }}</td>
+        <td>{{ row.status | statusLabel }}</td>
+        <td>{{ row.lastEventDate | date: 'mediumDate' }}</td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">No cows found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

@@ -1,0 +1,37 @@
+<div class="filter-container">
+  <div class="filter-title">Filters</div>
+
+  <div class="filter-row">
+    <div class="filter-item">
+      <label for="tagSearch">Tag Search</label>
+      <input
+        id="tagSearch"
+        type="text"
+        pInputText
+        [ngModel]="filterState?.tagSearch"
+        (ngModelChange)="onTagSearchChange($event)"
+        placeholder="Search by ear tag"
+      />
+    </div>
+
+    <div class="filter-item">
+      <label for="statusFilter">Status</label>
+      <p-dropdown
+        inputId="statusFilter"
+        [options]="statusOptions"
+        [ngModel]="filterState?.status"
+        (onChange)="onStatusChange($event.value)"
+      ></p-dropdown>
+    </div>
+
+    <div class="filter-item">
+      <label for="penFilter">Pen</label>
+      <p-dropdown
+        inputId="penFilter"
+        [options]="penOptions"
+        [ngModel]="filterState?.pen"
+        (onChange)="onPenChange($event.value)"
+      ></p-dropdown>
+    </div>
+  </div>
+</div>
