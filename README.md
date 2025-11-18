@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# Cow Catalog (Angular 18) --- Tushar---
+# Cow Catalog --- Tushar---
 
 A small but production-quality Angular 18 application implementing a **Cow Catalog** with:
 
