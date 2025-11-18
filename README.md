@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 
-# Website : https://tusharsri464.github.io/tushar.cow-catalog/cows
+ Website : **https://tusharsri464.github.io/tushar.cow-catalog/cows**
 
 # Cow Catalog --- Tushar---
 
@@ -17,7 +16,7 @@ A small but production-quality Angular 18 application implementing a **Cow Catal
 
 ## Tech Stack
 
-- Angular 18 (NgModule-based, no standalone components)
+- Angular 18
 - PrimeNG
 - RxJS
 - LocalStorage (via `LocalStorageService`)
@@ -36,7 +35,7 @@ A small but production-quality Angular 18 application implementing a **Cow Catal
 - `src/app/cows` – feature module
   - `CowListComponent` – liist, table, pagination, row navigation
   - `CowFiltersComponent` – search + filters with persisted state
-  - `CowFormComponent` – add/edit cow form with validation & unique tag check
+  - `CowFormComponent` – add cow form with validation & unique tag check
   - `CowDetailComponent` – cow details + last 5 events using PrimeNG timeline
 
 ## Feature Notes
@@ -117,4 +116,3 @@ A small but production-quality Angular 18 application implementing a **Cow Catal
 
 =======
 # tushar.cow-catolog
->>>>>>> 5d21da98c4d540a9b0c65f6a4b85befdf2b30a8a
