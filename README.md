@@ -112,8 +112,6 @@ A small but production-quality Angular 18 application implementing a **Cow Catal
 - **Filter persistence** – Instead of using query params, filters are stored in an in-memory `BehaviorSubject`
   inside `CowService`, which survives navigation within the SPA.
 
-You can treat this as a clean, interview-ready Angular 18 + PrimeNG implementation that can be extended
-with backend calls, authentication, or more advanced state management if needed.
 =======
 # tushar.cow-catolog
 >>>>>>> 5d21da98c4d540a9b0c65f6a4b85befdf2b30a8a
